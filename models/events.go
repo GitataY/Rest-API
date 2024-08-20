@@ -17,7 +17,7 @@ type Event struct {
 	UserID      int
 }
 
-var events = []Event{}
+// var events = []Event{}
 
 // Save is a method that saves an event to the database
 func (e Event) Save() error {
@@ -71,4 +71,19 @@ func GetEventByID(id int64) (*Event, error) {
 		return nil, err
 	}
 	return &e, nil
+}
+
+func (event Event) Update() error {
+	query := `
+	UPDATE events
+	SET Name = ?, Location = ?, Description = ?, DateTime = ?
+	WHERE ID = ?`
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return err
+	}
+	defer stmt.Close()
+
+	_, err = stmt.Exec(event.Name, event.Location, event.Description, event.DateTime, event.ID)
+	return err
 }
