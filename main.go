@@ -2,9 +2,7 @@ package main
 
 import (
 	"example/com/db"
-	"example/com/models"
-	"net/http"
-	"strconv"
+	"example/com/routes"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,54 +11,8 @@ func main() {
 	db.InitDB()
 	server := gin.Default()
 
-	server.GET("/events", getEvents)
-	server.GET("/events/:id", getEvent) // events/1, events/2
-	server.POST("/events", createEvent)
+	routes.RegisterRoutes(server)
 
 	server.Run(":8080") // localhost:8080
 
-}
-
-func getEvents(context *gin.Context) {
-	events, err := models.GetAllEvents()
-	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch events"})
-		return
-	}
-	context.JSON(http.StatusOK, events)
-
-}
-
-func getEvent(context *gin.Context) {
-	eventID, err := strconv.ParseInt(context.Param("id"), 10, 64)
-	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "invalid event id"})
-		return
-	}
-	event, err := models.GetEventByID(eventID)
-	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch event by id"})
-		return
-	}
-	context.JSON(http.StatusOK, event)
-}
-
-func createEvent(context *gin.Context) {
-	var events models.Event
-	err := context.ShouldBindJSON(&events)
-
-	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "could not parse request"})
-		return
-	}
-
-	events.ID = 1
-	events.UserID = 1
-
-	err = events.Save()
-	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not save event"})
-		return
-	}
-	context.JSON(http.StatusCreated, gin.H{"message": "Event created", "event": events})
 }
