@@ -5,10 +5,10 @@ import "time"
 // Event is a struct that represents an event in the database
 type Event struct {
 	ID          int
-	Name        string
-	Location    string
-	Description string
-	DateTime    time.Time
+	Name        string `binding:"required"`
+	Location    string `binding:"required"`
+	Description string `binding:"required"`
+	DateTime    time.Time `binding:"required"`
 	UserID      int
 }
 
