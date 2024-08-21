@@ -15,7 +15,7 @@ func signup(context *gin.Context) {
 		context.JSON(http.StatusBadRequest, gin.H{"message": "could not parse request"})
 		return
 	}
-
+	
 	// Saving the user object
 	if err := user.Save(); err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "could not save user"})
