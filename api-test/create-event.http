@@ -2,56 +2,8 @@ POST http://localhost:8080/events
 Content-Type: application/json
 
 {
-  "name": "Test Event 2",
-  "location": "Test Location 2",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
   "name": "Test Event 3",
   "location": "Test Location 3",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
-  "name": "Test Event 4",
-  "location": "Test Location 4",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
-  "name": "Test Event 5",
-  "location": "Test Location 5",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
-  "name": "Test Event 6",
-  "location": "Test Location 6",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
-  "name": "Test Event 7",
-  "location": "Test Location 7",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
-  "name": "Test Event 8",
-  "location": "Test Location 8",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
-  "name": "Test Event 9",
-  "location": "Test Location 9",
-  "description":"Another test event",
-  "DateTime": "2021-12-31T23:59:59Z"
-}
-{
-  "name": "Test Event 10",
-  "location": "Test Location 10",
   "description":"Another test event",
   "DateTime": "2021-12-31T23:59:59Z"
 }

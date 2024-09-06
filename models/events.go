@@ -35,7 +35,7 @@ func (e Event) Save() error {
 	}
 
 	id, err := result.LastInsertId()
-	e.ID = id
+	_ = id
 	return err
 }
 

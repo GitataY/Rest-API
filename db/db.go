@@ -3,7 +3,6 @@ package db
 import (
 	"database/sql"
 	"log"
-	
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -32,7 +31,7 @@ func InitDB() {
 
 func createTables() {
 	createUsersTable := `CREATE TABLE IF NOT EXISTS users (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		ID INTEGER PRIMARY KEY AUTOINCREMENT,
 		email TEXT NOT NULL UNIQUE,
 		Password TEXT NOT NULL
 	)`
